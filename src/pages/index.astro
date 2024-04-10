@@ -1,0 +1,118 @@
+---
+import Buttons from "../components/Buttons.astro";
+import Section from "../components/Section.astro";
+
+type AgeResponse = {
+  age: number;
+  nextBirthday: string;
+};
+
+const ageResponse = await fetch("https://age.astrid.sh/11/19/03").then(
+  async (response) => {
+    return (await response.json()) as AgeResponse;
+  }
+);
+---
+
+<html lang="en">
+  <head>
+    <script
+      defer
+      data-domain="astrid.sh"
+      src="https://analytics.astrid.sh/js/script.js"></script>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #181926;
+        font-family: "JetBrains Mono", monospace;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #c6a0f6;
+        margin: 20px 0;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+        border-bottom: 1px solid #c6a0f6;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>astrid &lt;3</title>
+  </head>
+  <body>
+    <div
+      class="w-[500px] min-h-[600px] max-h-[650px] bg-[#363a4f] text-center overflow-auto border-[1px] border-pink-300 text-[#cad3f5] pb-4"
+    >
+      <div
+        class="flex justify-between items-center list-none m-0 p-[20px] border-b-[1px] border-[#c6a0f6]"
+      >
+        <h2>astrid@silly-machine:~$ about-me</h2>
+        <!-- <div class="flex space-x-2">
+          <a href="/" class="hover:underline">about</a>
+        </div> -->
+      </div>
+      <Section
+        title="hii o/"
+        description="certified silly girl who loves to code and make things."
+      />
+      <hr />
+      <div class="text-left pt-4 pl-4">
+        <h2 class="text-[25px] font-bold">🩷 about me</h2>
+        <p class="text-[15px] overflow-hidden pt-4">
+          my name is <span class="text-pink-200">astrid</span>, if that wasn't
+          obvious. i am a {ageResponse.age} year old girl residing within the united
+          states. some of the things i love to do are baking, programming, reading,
+          taking walks, and more.
+        </p>
+      </div>
+      <hr />
+      <div class="text-left pt-4 pl-4">
+        <h2 class="text-[25px] font-bold">💭 contact</h2>
+        <p class="text-[15px] overflow-hidden pt-4">
+          professional contact <span class="italic">should</span> be through my email,
+          otherwise twitter is probably the best place to go.
+          <ul class="mt-2">
+            <li>
+              • email - <a href="mailto:me@astrid.sh" class="underline"
+                >me@astrid.sh</a
+              >
+            </li>
+            <li>
+              • twitter - <a
+                href="https://twitter.com/maybeastrid"
+                class="underline">@maybeastrid</a
+              >
+            </li>
+            <li>
+              • discord - <a
+                href="https://discord.com/users/852656702037164053"
+                class="underline">@astrid.lol</a
+              >
+            </li>
+          </ul>
+        </p>
+      </div>
+      <hr />
+      <div class="text-left pt-4 pl-4">
+        <h2 class="text-[25px] font-bold">✨ frens</h2>
+        <p>below you'll find some of my friends, go check them out &lt;3</p>
+        <div class="flex justify-center items-center mt-[2rem]">
+          <p style="image-rendering: pixelated">
+            <Buttons />
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
