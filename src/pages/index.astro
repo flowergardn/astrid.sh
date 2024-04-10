@@ -35,20 +35,35 @@ const ageResponse = await fetch("https://age.astrid.sh/11/19/03").then(
         border-top: 1px solid #c6a0f6;
         margin: 20px 0;
       }
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0;
-        padding: 20px;
-        border-bottom: 1px solid #c6a0f6;
-      }
     </style>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#f9a8d4" />
+
+    <!-- primary meta tags -->
     <title>astrid &lt;3</title>
+    <meta name="title" content={"astrid <3"} />
+    <meta name="description" content={"astrids portfolio"} />
+
+    <!-- open graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="256" />
+    <meta property="og:image:height" content="256" />
+    <meta property="og:title" content={"astrid <3"} />
+    <meta property="og:description" content={"astrids portfolio"} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- twitter -->
+    <meta name="twitter:site" content="@maybeastrid" />
+    <meta name="twitter:creator" content="@maybeastrid" />
+    <meta name="twitter:title" content={"astrid <3"} />
+    <meta name="twitter:description" content={"astrids portfolio"} />
+    <meta name="twitter:image" content="/logo.png" />
   </head>
   <body>
     <div
