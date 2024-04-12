@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Buttons from "../components/Buttons.astro";
 import Section from "../components/Section.astro";
 
@@ -7,11 +9,38 @@ type AgeResponse = {
   nextBirthday: string;
 };
 
-const ageResponse = await fetch("https://age.astrid.sh/11/19/03").then(
-  async (response) => {
-    return (await response.json()) as AgeResponse;
+type LastFmResponse = {
+  success: boolean;
+  tracks: {
+    cover: string;
+    album: string;
+    artist: string;
+    name: string;
+    playCount: number;
+    url: string;
+  }[];
+  artists: {
+    image: string;
+    name: string;
+    playcount: number;
+    url: string;
+  }[];
+};
+
+const ageResponse: AgeResponse = await fetch(
+  "https://age.astrid.sh/11/19/03"
+).then((response) => response.json());
+
+const lastFmResponse: LastFmResponse = await fetch(
+  "https://lastfm.astrid.sh/"
+).then((response) => response.json());
+
+function truncate(str: string, maxLength: number) {
+  if (str.length > maxLength) {
+    return str.substring(0, maxLength - 3) + "...";
   }
-);
+  return str;
+}
 ---
 
 <html lang="en">
@@ -128,6 +157,53 @@ const ageResponse = await fetch("https://age.astrid.sh/11/19/03").then(
           <p style="image-rendering: pixelated">
             <Buttons />
           </p>
+        </div>
+      </div>
+      <hr />
+      <div class="text-left pt-4 pl-4">
+        <h2 class="text-[25px] font-bold">🎵 music</h2>
+        <p>music is great, here's my favorites this week:</p>
+        <div class="mt-[1rem] grid grid-cols-4 gap-4">
+          {
+            lastFmResponse.artists.slice(0, 4).map((artist) => (
+              <div class="flex flex-col">
+                <img
+                  src={artist.image}
+                  alt={artist.name}
+                  class="h-16 w-16 rounded-full"
+                />
+                <a
+                  class="text-[15px] font-bold hover:underline"
+                  href={artist.url}
+                  target="_blank"
+                >
+                  {truncate(artist.name, 16)}
+                </a>
+                <p class="text-[15px] font-bold">{artist.playcount} / wk</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="mt-[1rem] grid grid-cols-4 gap-4">
+          {
+            lastFmResponse.tracks.map((track) => (
+              <div class="flex flex-col">
+                <img
+                  src={track.cover}
+                  alt={track.name}
+                  class="h-16 w-16 rounded-md"
+                />
+                <a
+                  class="text-[15px] font-bold hover:underline"
+                  href={track.url}
+                  target="_blank"
+                >
+                  {truncate(track.name, 16)}
+                </a>
+                <p class="text-[15px] font-bold">{track.playCount} / wk</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
