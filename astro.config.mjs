@@ -9,5 +9,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [react(), tailwind(), mdx()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel({
+    edgeMiddleware: true,
+  }),
 });
