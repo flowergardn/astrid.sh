@@ -1,144 +1,58 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.tsx';
+import ky from "ky";
 import Buttons from "../components/Buttons.astro";
-import Section from "../components/Section.astro";
+import Status from "../components/Status";
 
-type AgeResponse = {
-  age: number;
-  nextBirthday: string;
+type UserInfo = {
+    status: string;
+    activities: any[];
+    avatar: string;
+    displayName: string;
+    username: string;
 };
 
-const ageResponse: AgeResponse = await fetch(
-  "https://age.astrid.sh/11/19/03"
-).then((response) => response.json());
+type AgeResponse = {
+    age: number;
+    nextBirthday: string;
+};
+
+
+const userInfo: UserInfo = await ky.get(Astro.request.url + "discord").json<UserInfo>();
+const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").json<AgeResponse>();
 ---
 
-<html lang="en">
-  <head>
-    <script
-      defer
-      data-domain="astrid.sh"
-      src="https://analytics.astrid.sh/js/script.js"></script>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #181926;
-        font-family: "JetBrains Mono", monospace;
-      }
-      hr {
-        border: none;
-        border-top: 1px solid #ca9ee6;
-        margin: 20px 0;
-      }
-    </style>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#f9a8d4" />
-
-    <!-- primary meta tags -->
-    <title>astrid &lt;3</title>
-    <meta name="title" content={"astrid <3"} />
-    <meta name="description" content={"astrids portfolio"} />
-
-    <!-- open graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="256" />
-    <meta property="og:image:height" content="256" />
-    <meta property="og:title" content={"astrid <3"} />
-    <meta property="og:description" content={"astrids portfolio"} />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- twitter -->
-    <meta name="twitter:site" content="@maybeastrid" />
-    <meta name="twitter:creator" content="@maybeastrid" />
-    <meta name="twitter:title" content={"astrid <3"} />
-    <meta name="twitter:description" content={"astrids portfolio"} />
-    <meta name="twitter:image" content="/logo.png" />
-  </head>
-  <body>
-    <div
-      class="w-[500px] min-h-[600px] max-h-[650px] bg-[#363a4f] text-center overflow-auto border-[1px] border-pink-300 text-[#cad3f5] pb-4"
-    >
-      <div
-        class="flex justify-between items-center list-none m-0 p-[20px] border-b-[1px] border-[#ca9ee6]"
-      >
-        <h2>astrid@silly-machine:~$ about-me</h2>
-      </div>
-      <Section
-        title="hii o/"
-        description="certified silly girl who loves to code and make things."
-      />
-      <hr />
-      <div class="text-left pt-4 pl-4">
-        <h2 class="text-[25px] font-bold">🩷 about me</h2>
-        <p class="text-[15px] overflow-hidden pt-4">
-          my name is <span class="text-pink-200">astrid</span>, if that wasn't
-          obvious. i am a {ageResponse.age} year old girl residing within the united
-          states. some of the things i love to do are baking, programming, reading,
-          taking walks, and more.<br /><br />for more professional information,
-          check out my
-          <a class="text-pink-200" href="/cv">cv</a>.
-        </p>
-      </div>
-      <hr />
-      <div class="text-left pt-4 pl-4">
-        <h2 class="text-[25px] font-bold">⭐ support</h2>
-        <p class="text-[15px] overflow-hidden pt-4">
-          if you're a fan of my work, consider supporting me on <a
-            class="text-pink-200 hover:underline"
-            href="https://github.com/sponsors/flowergardn"
-            target="_blank"
-          >
-            github sponsors</a
-          >! you will be helping me pay for expenses and allowing me to make
-          more cool stuff &lt;3
-        </p>
-      </div>
-      <hr />
-      <div class="text-left pt-4 pl-4">
-        <h2 class="text-[25px] font-bold">💭 contact</h2>
-        <p class="text-[15px] overflow-hidden pt-4">
-          professional contact <span class="italic">should</span> be through my email,
-          otherwise twitter is probably the best place to go.
-          <ul class="mt-2">
-            <li>
-              • email - <a href="mailto:me@astrid.sh" class="underline"
-                >me@astrid.sh</a
-              >
-            </li>
-            <li>
-              • twitter - <a
-                href="https://twitter.com/maybeastrid"
-                class="underline">@maybeastrid</a
-              >
-            </li>
-            <li>
-              • discord - <a
-                href="https://discord.com/users/852656702037164053"
-                class="underline">@flowergardn</a
-              >
-            </li>
-          </ul>
-        </p>
-      </div>
-      <hr />
-      <div class="text-left pt-4 pl-4">
-        <h2 class="text-[25px] font-bold">✨ frens</h2>
-        <p>below you'll find some of my friends, go check them out!!</p>
-        <div class="flex justify-center items-center mt-[2rem]">
-          <p style="image-rendering: pixelated">
-            <Buttons />
-          </p>
+<Layout>
+    <div class="flex center items-center justify-center h-screen">
+        <div class="bg-surface text-gray-800 w-[50vw] min-h-[35vh] rounded-lg shadow-md" id="container">
+            <Navbar currentPage={Astro.url.pathname}/>
+            <div id="content" class="p-6 text-text">
+                <div id="user-info" class="flex">
+                    <img src={userInfo.avatar} class="w-24 h-24" alt="Profile picture of Astrid"/>
+                    <div class="ml-4 ">
+                        <div class="flex items-center space-x-2">
+                            <Status status={userInfo.status} client:load />
+                            <p class="text-body">{userInfo.displayName}</p>
+                        </div>
+                        <p class="text-body">she/her - {ageResponse.age} years old</p>
+                        <section class="flex mt-4 space-x-4">
+                            <a href="https://github.com/flowergardn">github</a>
+                            <a href="https://twitter.com/maybeastrid">twitter</a>
+                            <a href="https://bsky.app/profile/astrid.sh">bluesky</a>
+                        </section>
+                    </div>
+                </div>
+                <section id="about-me" class="mt-4 ">
+                    <p>
+                        hii! i'm astrid (aka: flowergardn). i'm a full-stack software developer, baker, and cat lover.
+                    </p>
+                    <p>
+                        i mostly spend my time with web development, with nextjs, drizzle, and tailwindcss. however, i also dabble in other things, like discord bots and minecraft development.
+                    </p>
+                    <Buttons />
+                </section>
+            </div>
         </div>
-      </div>
     </div>
-  </body>
-</html>
+</Layout>

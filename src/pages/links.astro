@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.tsx';
+import LinkItem from "../components/LinkItem";
+---
+
+<Layout>
+    <div class="flex center items-center justify-center h-screen">
+        <div class="bg-surface text-gray-800 w-[50vw] min-h-[35vh] rounded-lg shadow-md" id="container">
+            <Navbar currentPage={Astro.url.pathname} />
+            <ul class="text-text">
+                <LinkItem name="email" href="mailto:me@astrid.sh" label="me at astrid.sh"/>
+                <LinkItem name="discord" href="https://discord.com/users/852656702037164053" label="@flowergardn"/>
+                <LinkItem name="bluesky" href="https://bsky.app/profile/astrid.sh"/>
+                <LinkItem name="twitter" href="https://twitter.com/maybeastrid"/>
+                <LinkItem name="github" href="https://github.com/flowergardn"/>
+                <LinkItem name="modrinth" href="https://modrinth.com/user/astrid"/>
+                <LinkItem name="pronouns" href="https://en.pronouns.page/@astridx"/>
+                <LinkItem name="lastfm" href="https://www.last.fm/user/flowergardn"/>
+            </ul>
+        </div>
+    </div>
+</Layout>

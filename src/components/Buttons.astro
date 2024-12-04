@@ -1,65 +1,44 @@
 ---
 const buttons: {
-  imageURL?: string;
-  siteURL: string;
-  name?: string;
+    imageURL: string;
+    siteURL: string;
 }[] = [
-  {
-    imageURL: "/buttons/azzy.png",
-    siteURL: "https://astrid.sh/",
-  },
-  {
-    imageURL: "https://kibty.town/files/img/buttons/kibty.town-badge.gif",
-    siteURL: "https://kibty.town/",
-  },
-  {
-    imageURL: "https://jamie.rs/images/jamie.rs-badge.png",
-    siteURL: "https://jamie.rs/",
-  },
-  {
-    siteURL: "https://aroze.me/",
-    imageURL: "https://aroze.me/images/88x31/aroze.png",
-  },
-  {
-    siteURL: "https://lily.pet/",
-    imageURL: "https://lily.pet/assets/badges/lily_pet.gif",
-  },
-  {
-    siteURL: "https://jos.gg/",
-    name: "jos 🍪",
-  },
-  {
-    siteURL: "https://www.flavored.dev/",
-    name: "apple 🍎",
-  },
-  {
-    siteURL: "https://jadezinnia.carrd.co/",
-    name: "jade 💛",
-  },
-  {
-    siteURL: "https://ollie.lol/",
-    name: "ollie 🍋",
-  },
+    {
+        imageURL: "/buttons/azzy.png",
+        siteURL: "https://astrid.sh/",
+    },
+    {
+        siteURL: "https://lily.pet/",
+        imageURL: "https://lily.pet/assets/badges/lily_pet.gif",
+    },
+    {
+        siteURL: "https://aroze.me/",
+        imageURL: "https://aroze.me/images/88x31/aroze.png",
+    },
+
+    {
+        imageURL: "https://kibty.town/files/img/buttons/kibty.town-badge.gif",
+        siteURL: "https://kibty.town/",
+    },
+    {
+        imageURL: "https://jamie.rs/images/jamie.rs-badge.png",
+        siteURL: "https://jamie.rs/",
+    },
+
 ];
 ---
 
-<div class="grid grid-cols-4 gap-4 auto-cols-max mt-4 sm:justify-items-center">
-  {
-    buttons.map((link) => {
-      if (!link.imageURL)
-        return (
-          <a
-            class="inline-flex border-[1px] border-pink-300 text-white font-bold px-2 rounded-xl"
-            href={link.siteURL}
-          >
-            {link.name ?? link.siteURL.split("/")[2]}
-          </a>
-        );
-      return (
-        <a class="inline-flex ml-2 mr-2" href={link.siteURL}>
-          <img src={link.imageURL} alt={link.siteURL} />
-        </a>
-      );
-    })
-  }
+<div class="flex justify-start items-center mt-[2rem]">
+    <div class="flex flex-wrap">
+        {
+            buttons.map((link) => {
+                return (
+                        <a class="inline-flex mx-2" href={link.siteURL}>
+                            <img src={link.imageURL} alt={link.siteURL}/>
+                        </a>
+                );
+            })
+        }
+    </div>
 </div>
+
