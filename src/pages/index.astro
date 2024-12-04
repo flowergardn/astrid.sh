@@ -19,7 +19,7 @@ type AgeResponse = {
 };
 
 
-const userInfo: UserInfo = await ky.get(Astro.request.url + "discord").json<UserInfo>();
+const userInfo: UserInfo = await ky.get("https://astrid.sh/discord").json<UserInfo>();
 const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").json<AgeResponse>();
 ---
 
