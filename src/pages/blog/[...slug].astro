@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog');
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: post,
+    }));
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+export const prerender = true;
+---
+
+<Layout>
+  <div class="flex center justify-center h-screen mt-[10vh]">
+      <section class="text-text prose prose-h1:font-bold prose-h1:text-[#cdd6f4] prose-a:text-[#cdd6f4] prose-hr:mt-6 prose-hr:mb-12">
+          <h1>{post.data.title}</h1>
+          <p>{post.data.description}</p>
+          <a href={"/blog"} class="no-underline">🡄 back to blog</a>
+          <hr/>
+          <Content />
+      </section>
+  </div>
+</Layout>

@@ -2,64 +2,66 @@ import type { APIContext, APIRoute } from "astro";
 import ky from "ky";
 
 type DiscordData = {
-    data: {
-        discord_user: {
-            id: string;
-            username: string;
-            avatar: string;
-            discriminator: string;
-            clan: {
-                tag: string | null;
-                identity_guild_id: string;
-                badge: string | null;
-                identity_enabled: boolean;
-            };
-            avatar_decoration_data: null;
-            bot: boolean;
-            global_name: string;
-            display_name: string;
-            public_flags: number;
-        };
-        activities: {
-            id: string;
-            name: string;
-            type: number;
-            state: string;
-            emoji: {
-                id: string;
-                name: string;
-                animated: boolean;
-            };
-            created_at: number;
-        }[];
-        discord_status: string;
-        active_on_discord_web: boolean;
-        active_on_discord_desktop: boolean;
-        active_on_discord_mobile: boolean;
-        listening_to_spotify: boolean;
-        spotify: null;
+  data: {
+    discord_user: {
+      id: string;
+      username: string;
+      avatar: string;
+      discriminator: string;
+      clan: {
+        tag: string | null;
+        identity_guild_id: string;
+        badge: string | null;
+        identity_enabled: boolean;
+      };
+      avatar_decoration_data: null;
+      bot: boolean;
+      global_name: string;
+      display_name: string;
+      public_flags: number;
     };
-    success: boolean;
+    activities: {
+      id: string;
+      name: string;
+      type: number;
+      state: string;
+      emoji: {
+        id: string;
+        name: string;
+        animated: boolean;
+      };
+      created_at: number;
+    }[];
+    discord_status: string;
+    active_on_discord_web: boolean;
+    active_on_discord_desktop: boolean;
+    active_on_discord_mobile: boolean;
+    listening_to_spotify: boolean;
+    spotify: null;
+  };
+  success: boolean;
 };
 const DISCORD_ID = "852656702037164053";
 
-export const GET: APIRoute = async (context: APIContext) => {
-    const discordData = await ky.get("https://api.lanyard.rest/v1/users/" + DISCORD_ID).json<DiscordData>();
+export const GET: APIRoute = async () => {
+  const discordData = await ky
+    .get("https://api.lanyard.rest/v1/users/" + DISCORD_ID)
+    .json<DiscordData>();
 
-    const discordAvatar = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discordData.data.discord_user.avatar}.png?size=1024`;
+  const discordAvatar = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discordData.data.discord_user.avatar}.png?size=1024`;
 
-    return new Response(
-        JSON.stringify({
-            status: discordData.data.discord_status,
-            activities: discordData.data.activities,
-            avatar: discordAvatar,
-            username: discordData.data.discord_user.username,
-            displayName: discordData.data.discord_user.display_name,
-        }),
-        {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    );
+  return new Response(
+    JSON.stringify({
+      status: discordData.data.discord_status,
+      activities: discordData.data.activities,
+      avatar: discordAvatar,
+      username: discordData.data.discord_user.username,
+      displayName: discordData.data.discord_user.display_name,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
 };
