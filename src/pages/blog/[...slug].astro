@@ -17,7 +17,7 @@ const { Content } = await render(post);
 export const prerender = true;
 ---
 
-<Layout>
+<Layout title={`${post.data.title} - astrid's blog`} description={post.data.description}>
   <div class="flex center justify-center h-screen mt-[10vh]">
       <section class="text-text prose prose-h1:font-bold prose-h1:text-[#cdd6f4] prose-a:text-[#cdd6f4] prose-hr:mt-6 prose-hr:mb-12">
           <h1>{post.data.title}</h1>
