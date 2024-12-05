@@ -63,6 +63,10 @@
   a {
     @apply text-subtext hover:text-pink transition-colors duration-200 ease-in-out cursor-pointer;
   }
+
+  .project {
+    @apply underline decoration-pink/80
+  }
 }
 @layer base {
   * {
