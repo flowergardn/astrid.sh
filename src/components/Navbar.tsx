@@ -10,6 +10,10 @@ const pages = [
     href: "/blog",
   },
   {
+    name: "experience",
+    href: "/experience",
+  },
+  {
     name: "Contact / Links",
     href: "/links",
   },

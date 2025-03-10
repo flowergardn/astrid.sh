@@ -20,7 +20,6 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
-
   output: "server",
   adapter: vercel(),
 });
