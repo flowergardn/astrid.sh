@@ -7,6 +7,24 @@ import {
 
 const professional = [
   {
+    name: "Waypoint Studios - Software Engineer (current)",
+    image: "/assets/waypoint.webp",
+    description: (
+      <>
+        <p>
+          Waypoint Studios is a leading Minecraft Marketplace publisher helping
+          creators publish their work to the official Minecraft Marketplace.
+        </p>
+        <br />
+        <p>
+          I work on developing a platform for tracking Minecraft analytics,
+          providing valuable insights into the work of Minecraft content
+          creators.
+        </p>
+      </>
+    ),
+  },
+  {
     name: "Starfury Studios - Software Engineer",
     image: "/assets/starfury.png",
     description: (
