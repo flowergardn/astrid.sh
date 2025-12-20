@@ -8,6 +8,7 @@ import vercel from "@astrojs/vercel";
 
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
+import { readingTime } from "./src/lib/reading-time";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,9 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
+  markdown: {
+    remarkPlugins: [readingTime],
+  },
   output: "server",
   adapter: vercel(),
 });

@@ -3,6 +3,7 @@ export type BlogInfo = {
   description?: string;
   createdAt: string;
   url: string;
+  minutesRead?: string;
   draft?: boolean;
 };
 

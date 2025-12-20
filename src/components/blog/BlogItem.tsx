@@ -8,7 +8,12 @@ export default function BlogItem(props: { info: BlogInfo }) {
           href={props.info.url}
           className="flex items-center justify-between space-x-2"
         >
-          <p className="truncate max-w-96 min-w-36">{props.info.title}</p>
+          <p className="truncate max-w-96 min-w-36">
+            {props.info.title}
+            <span className="ml-2 text-xs bg-overlay1 px-2 py-0.5 rounded-full group-hover:bg-pink/30">
+              {props.info.minutesRead}
+            </span>
+          </p>
           <p className="italic min-w-36 flex-grow pl-[2vw]">
             {props.info.description}
           </p>
