@@ -55,6 +55,9 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --surface2: 45 7% 28%;
+    --subtext0: 227 17% 86%;
+    --pink: 316 72% 86%;
   }
 
   .body-text {
@@ -69,11 +72,30 @@
     @apply underline decoration-pink/80;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  .prose {
+    @apply prose-invert;
+  }
+
+  .prose blockquote {
+    @apply border-l-pink text-gray-400 bg-surface2/10;
+  }
+
+  .prose strong {
+    @apply text-pink;
+  }
+
+  .prose p {
+    @apply text-lg;
   }
 }

@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 import Layout from '~/layouts/Layout.astro';
-
 export async function getStaticPaths() {
     const posts = await getCollection('blog');
     return posts.map((post) => ({
@@ -10,21 +9,23 @@ export async function getStaticPaths() {
         props: post,
     }));
 }
-
 const post = Astro.props;
 const { Content } = await render(post);
-
 export const prerender = true;
 ---
-
 <Layout title={`${post.data.title} - astrid's blog`} description={post.data.description}>
-  <div class="flex center justify-center h-screen mt-[10vh]">
-      <section class="text-text prose prose-h1:font-bold prose-h1:text-[#cdd6f4] prose-a:text-[#cdd6f4] prose-hr:mt-6 prose-hr:mb-12 px-10 md:p-0">
-          <h1>{post.data.title}</h1>
-          <p>{post.data.description}</p>
-          <a href={"/blog"} class="no-underline">back to blog</a>
-          <hr/>
-          <Content />
-      </section>
+  <div class="min-h-screen flex flex-col">
+    <div class="flex-grow flex justify-center mt-[10vh] mb-[4vh]">
+        <section class="text-text prose prose-h1:font-bold prose-h2:font-bold prose-h1:text-[#cdd6f4] prose-h2:text-[#cdd6f4] prose-a:text-[#cdd6f4] prose-hr:mt-6 prose-hr:mb-12 px-10 md:p-0">
+            <h1>{post.data.title}</h1>
+            <p>{post.data.description}</p>
+            <a href={"/blog"} class="no-underline">back to blog</a>
+            <hr/>
+            <Content />
+        </section>
+    </div>
+    <footer class="text-center py-8 text-[#7F7F7F]">
+       🤍
+    </footer>
   </div>
 </Layout>
