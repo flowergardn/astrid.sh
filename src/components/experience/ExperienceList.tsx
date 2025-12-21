@@ -17,8 +17,8 @@ const professional = [
         </p>
         <br />
         <p>
-          I work on developing a platform for tracking Minecraft analytics,
-          providing valuable insights into the work of Minecraft content
+          I work on developing a platform for tracking analytics of game
+          servers, providing valuable insights into the work of content
           creators.
         </p>
       </>
