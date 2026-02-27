@@ -1,4 +1,4 @@
-import type { APIContext, APIRoute } from "astro";
+import type { APIRoute } from "astro";
 import ky from "ky";
 
 type DiscordData = {
@@ -48,20 +48,31 @@ export const GET: APIRoute = async () => {
     .get("https://api.lanyard.rest/v1/users/" + DISCORD_ID)
     .json<DiscordData>();
 
-  const discordAvatar = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discordData.data.discord_user.avatar}.png?size=1024`;
+    const discordAvatar = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discordData.data.discord_user.avatar}.png?size=1024`;
 
-  return new Response(
-    JSON.stringify({
-      status: discordData.data.discord_status,
-      activities: discordData.data.activities,
-      avatar: discordAvatar,
-      username: discordData.data.discord_user.username,
-      displayName: discordData.data.discord_user.display_name,
-    }),
-    {
-      headers: {
-        "Content-Type": "application/json",
+    return new Response(
+      JSON.stringify({
+        status: discordData.data.discord_status,
+        activities: discordData.data.activities,
+        avatar: discordAvatar,
+        username: discordData.data.discord_user.username,
+        displayName: discordData.data.discord_user.display_name,
+      }),
+      { headers: { "Content-Type": "application/json" } },
+    );
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        status: "offline",
+        activities: [],
+        avatar: `https://cdn.discordapp.com/avatars/852656702037164053/d6fc243824654ac0a4fdb7b23252e506.webp?size=128`,
+        username: "unknown",
+        displayName: "Unknown",
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
       },
-    },
-  );
+    );
+  }
 };
