@@ -44,9 +44,10 @@ type DiscordData = {
 const DISCORD_ID = "852656702037164053";
 
 export const GET: APIRoute = async () => {
-  const discordData = await ky
-    .get("https://api.lanyard.rest/v1/users/" + DISCORD_ID)
-    .json<DiscordData>();
+  try {
+    const discordData = await ky
+      .get("https://api.lanyard.rest/v1/users/" + DISCORD_ID)
+      .json<DiscordData>();
 
     const discordAvatar = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discordData.data.discord_user.avatar}.png?size=1024`;
 
