@@ -20,8 +20,12 @@ const buttons: {
         imageURL: "/buttons/lily-badge.gif",
     },
     {
-        siteURL: "https://kibty.town/",
-        imageURL: "/buttons/eva-badge.gif",
+        siteURL: "https://eva.ac/",
+        imageURL: "/buttons/eva-badge.png",
+    },
+    {
+        siteURL: "https://jos.gg/",
+        imageURL: "/buttons/jos-badge.gif",
     },
     {
         siteURL: "https://jamie.rs/",
@@ -43,9 +47,12 @@ const buttons: {
         {
             buttons.map((link) => {
                 return (
-                        <a class="inline-flex mx-2 mb-4 sm:mb-0" href={link.siteURL}>
-                            <img src={link.imageURL} alt={link.siteURL}/>
-                        </a>
+                    <a
+                        class="inline-flex mx-2 mb-4 sm:mb-0"
+                        href={link.siteURL}
+                    >
+                        <img src={link.imageURL} alt={link.siteURL} />
+                    </a>
                 );
             })
         }
