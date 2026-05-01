@@ -4,7 +4,7 @@ export type BlogInfo = {
   createdAt: string;
   url: string;
   minutesRead?: string;
-  draft?: boolean;
+  unlisted?: boolean;
 };
 
 export type Post = {
