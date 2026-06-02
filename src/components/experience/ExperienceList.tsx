@@ -7,7 +7,7 @@ import {
 
 const professional = [
   {
-    name: "Waypoint Studios - Software Engineer (current)",
+    name: "Waypoint Studios - Software Engineer (July 2025 - June 2026)",
     image: "/assets/waypoint.webp",
     description: (
       <>
@@ -17,34 +17,14 @@ const professional = [
         </p>
         <br />
         <p>
-          I work on developing a platform for tracking analytics of game
-          servers, providing valuable insights into the work of content
-          creators.
+          I led development of a modular platform for tracking analytics of game
+          servers
         </p>
       </>
     ),
   },
   {
-    name: "Starfury Studios - Software Engineer",
-    image: "/assets/starfury.png",
-    description: (
-      <>
-        <p>
-          Starfury Studios was a UGC creation studio that created content for
-          UGC platforms, most noteably Minecraft. The company collaborated with
-          various other companies to bring experiences to massive userbases.
-        </p>
-        <br />
-        <p>
-          I worked alongside the team primairly focusing on frontend
-          development, but my role often consisted of full-stack depending on
-          what was required for the task at hand.
-        </p>
-      </>
-    ),
-  },
-  {
-    name: "Hideaway - Web Developer",
+    name: "Hideaway - Web Developer (July 2024 - November 2024)"",
     image: "/assets/hideaway.png",
     description: (
       <>
@@ -54,20 +34,6 @@ const professional = [
           <a href="https://www.youtube.com/@Kiingtong">kiingtong</a>. I assisted
           in improving and mantaining our website,{" "}
           <a href="https://hideaway.gg">hideaway.gg</a>
-        </p>
-      </>
-    ),
-  },
-  {
-    name: "Ingot - Web Developer",
-    image: "/assets/ingot.svg",
-    description: (
-      <>
-        <p>
-          Ingot is a server hosting platform, making scaling for Minecraft
-          servers generally accessible. Up until it being sold, I was
-          responsible for Anvil alongside another person, our custom frontend
-          that interacted with our APIs to provide a smooth user experience.
         </p>
       </>
     ),
