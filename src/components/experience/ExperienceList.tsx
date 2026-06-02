@@ -24,7 +24,7 @@ const professional = [
     ),
   },
   {
-    name: "Hideaway - Web Developer (July 2024 - November 2024)"",
+    name: "Hideaway - Web Developer (July 2024 - November 2024)",
     image: "/assets/hideaway.png",
     description: (
       <>
