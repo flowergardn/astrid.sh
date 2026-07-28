@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.tsx';
 import ky from "ky";
 import Buttons from "../components/home/Buttons.astro";
 import Status from "../components/home/Status";
+import Page from '~/components/Page.astro';
 
 type UserInfo = {
     status: string;
@@ -22,8 +23,7 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
 ---
 
 <Layout>
-    <div class="flex center items-center justify-center h-screen">
-        <div class="bg-surface text-gray-800 w-full md:w-[55vw] min-h-[35vh] rounded-lg shadow-md" id="container">
+    <Page>
             <Navbar currentPage={Astro.url.pathname}/>
             <div id="content" class="p-6 text-text">
                 <div id="user-info" class="flex">
@@ -58,6 +58,5 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
                     <Buttons />
                 </section>
             </div>
-        </div>
-    </div>
+   <Page />
 </Layout>

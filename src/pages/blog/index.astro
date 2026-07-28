@@ -5,6 +5,7 @@ import { RssIcon } from "lucide-react"
 import {getCollection} from 'astro:content';
 import Layout from '~/layouts/Layout.astro';
 import { render } from 'astro:content';
+import Page from '~/components/Page.astro';
 
 const posts = await getCollection('blog');
 let sorted = posts.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
@@ -12,11 +13,7 @@ sorted = sorted.filter((p) => !p.data.unlisted)
 ---
 
 <Layout>
-    <div class="flex center items-center justify-center h-screen">
-        <div
-            class="bg-surface text-gray-800 w-full md:w-[55vw] min-h-[35vh] rounded-lg shadow-md"
-            id="container"
-        >
+    <Page>
             <Navbar currentPage={Astro.url.pathname} />
             <ul class="text-text">
                 {sorted.map(async (post) => {
@@ -36,6 +33,5 @@ sorted = sorted.filter((p) => !p.data.unlisted)
             <a href="/rss.xml" class="fixed bottom-4 right-4 text-text/40 hover:text-text transition-colors">
                 <RssIcon/>
             </a>
-        </div>
-    </div>
+    </Page>
 </Layout>;

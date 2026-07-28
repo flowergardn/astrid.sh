@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar';
 import ExperienceList from "../components/experience/ExperienceList";
+import Page from '~/components/Page.astro';
 ---
 
 <Layout>
-    <div class="flex center items-center justify-center h-screen">
-        <div class="bg-surface  text-text w-full md:w-[55vw] min-h-[35vh] rounded-lg shadow-md" id="container">
+    <Page>
             <Navbar currentPage={Astro.url.pathname}/>
             <div id="content" class="p-4">
                 <p>Professional experience</p>
@@ -16,6 +16,5 @@ import ExperienceList from "../components/experience/ExperienceList";
                 <p>Voluntary experience</p>
                 <ExperienceList type="voluntary"  client:load/>
             </div>
-        </div>
-    </div>
+    </Page>
 </Layout>
