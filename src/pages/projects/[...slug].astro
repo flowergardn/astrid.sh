@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+export async function getStaticPaths() {
+    const posts = await getCollection('project');
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: post,
+    }));
+}
+const post = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+export const prerender = true;
+---
+<Layout title={post.data.title} description={post.data.description}>
+  <div class="min-h-screen flex flex-col">
+    <div class="flex-grow flex justify-center mt-[10vh] mb-[4vh]">
+        <section class="text-text prose prose-h1:font-bold prose-h2:font-bold prose-h1:text-[#cdd6f4] prose-h2:text-[#cdd6f4] prose-a:text-[#cdd6f4] prose-hr:mt-6 prose-hr:mb-12 px-10 md:p-0">
+            <h1>{post.data.title}</h1>
+            <p>{post.data.description}</p>
+             <p>a {remarkPluginFrontmatter.minutesRead}</p>
+            <a href={"/projects"} class="no-underline">back to projects</a>
+            <hr/>
+            <Content />
+        </section>
+    </div>
+    <footer class="text-center py-8 text-[#7F7F7F]">
+       🤍
+    </footer>
+  </div>
+</Layout>
