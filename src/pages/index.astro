@@ -19,6 +19,7 @@ type AgeResponse = {
     nextBirthday: string;
 };
 
+const userInfo: UserInfo = await ky.get("https://astrid.sh/discord").json<UserInfo>();
 const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").json<AgeResponse>();
 ---
 
@@ -27,10 +28,11 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
             <Navbar currentPage={Astro.url.pathname}/>
             <div id="content" class="p-6 text-text">
                 <div id="user-info" class="flex">
-                    <img src={"https://cdn.discordapp.com/avatars/852656702037164053/d6fc243824654ac0a4fdb7b23252e506.webp?size=128"} class="w-24 h-24" alt="Profile picture of Astrid"/>
+                    <img src={userInfo.avatar} class="w-24 h-24" alt="Profile picture of Astrid"/>
                     <div class="ml-4 ">
                         <div class="flex items-center space-x-2">
-                            <p class="text-body">astrid</p>
+                            <Status status={userInfo.status} client:load />
+                            <p class="text-body">{userInfo.displayName}<p>
                         </div>
                         <p class="text-body">she/her - {ageResponse.age} years old</p>
                         <section class="flex mt-4 space-x-4">
