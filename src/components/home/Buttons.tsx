@@ -67,7 +67,8 @@ const buttons: Button[] = [
     name: "Jamie",
     siteURL: "https://jamie.rs/",
     imageURL: "/buttons/jamie-badge.png",
-    description: "Me & Jamie don't talk much anymore, but she's friends with a lot of my friends 💜",
+    description:
+      "Me & Jamie don't talk much anymore, but she's friends with a lot of my friends 💜",
   },
 ];
 
@@ -79,7 +80,7 @@ function DisplayBtnInfo({ btn }: { btn: Button }) {
   }
 
   return (
-    <div className="w-[440px] min-h-36 border border-border border-pink bg-background/50 p-4">
+    <div className="w-full md:w-[440px] min-h-36 border border-border border-pink bg-background/50 p-4">
       <div className="flex items-center gap-3">
         <img src={btn.imageURL} alt={title} />
         <h3>{title}</h3>
@@ -99,7 +100,7 @@ export default function Buttons() {
   return (
     <div>
       <div className="flex justify-start items-center mt-[2rem]">
-        <div className="grid grid-cols-5 w-fit">
+        <div className="grid grid-cols-3 md:grid-cols-5 w-fit">
           {buttons.map((btn) => {
             const className = cn(
               "inline-flex sm:mb-0",
@@ -136,7 +137,10 @@ export default function Buttons() {
         </div>
       </div>
       <div className="m-2">
-        <button onClick={() => setEnabled(!enabled)} className={cn(enabled && "text-pink underline")}>
+        <button
+          onClick={() => setEnabled(!enabled)}
+          className={cn(enabled && "text-pink underline")}
+        >
           Picker {enabled ? "enabled" : "disabled"}
         </button>
         {activeButton && <DisplayBtnInfo btn={activeButton} />}
