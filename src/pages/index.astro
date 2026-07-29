@@ -26,10 +26,10 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
 <Layout>
     <Page>
             <Navbar currentPage={Astro.url.pathname}/>
-            <div id="content" class="p-6 text-text">
-                <div id="user-info" class="flex">
+            <div class="p-6">
+                <div class="flex">
                     <img src={userInfo.avatar} class="w-24 h-24" alt="Profile picture of Astrid"/>
-                    <div class="ml-4 ">
+                    <div class="ml-4">
                         <div class="flex items-center space-x-2">
                             <Status status={userInfo.status} client:load />
                             <p class="text-body">{userInfo.displayName}<p>
@@ -41,7 +41,7 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
                         </section>
                     </div>
                 </div>
-                <section id="about-me" class="mt-4 ">
+                <section class="mt-4">
                     <p>
                         hii! i'm astrid (aka: flowergardn). i'm a full-stack software developer, baker, reader, and lover of music.
                     </p>

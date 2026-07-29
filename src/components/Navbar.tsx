@@ -21,10 +21,7 @@ const pages = [
 
 export default function Navbar(props: { currentPage: string }) {
   return (
-    <div
-      className="py-4 text-subtext px-4 flex justify-start space-x-4 bg-background/50"
-      id="navbar"
-    >
+    <div className="py-4 text-subtext px-4 flex justify-start space-x-4 bg-background/50">
       {pages.map((page, index) => {
         return (
           <a

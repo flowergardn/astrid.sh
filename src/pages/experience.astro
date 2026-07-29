@@ -8,11 +8,11 @@ import Page from '~/components/Page.astro';
 <Layout>
     <Page>
             <Navbar currentPage={Astro.url.pathname}/>
-            <div id="content" class="p-4">
+            <div class="p-4">
                 <p>Professional experience</p>
                 <ExperienceList type="professional" client:load/>
             </div>
-            <div id="content" class="p-4 text-text">
+            <div class="p-4">
                 <p>Voluntary experience</p>
                 <ExperienceList type="voluntary"  client:load/>
             </div>
