@@ -2,7 +2,7 @@ import { cn } from "~/lib/utils.ts";
 
 const pages = [
   {
-    name: "Home",
+    name: "home",
     href: "/",
   },
   // {

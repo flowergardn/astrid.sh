@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.tsx';
 import ky from "ky";
-import Buttons from "../components/home/Buttons.astro";
+import Buttons from "../components/home/Buttons";
 import Status from "../components/home/Status";
 import Page from '~/components/Page.astro';
 
@@ -57,7 +57,7 @@ const ageResponse: AgeResponse = await ky.get("https://age.astrid.sh/11/19/03").
                     <p>
                       for information on my experience, whether professional or voluntary, check out the  <a href="/experience" class="project">experience</a> page.
                     </p>
-                    <Buttons />
+                    <Buttons client:load />
                 </section>
             </div>
    <Page />
