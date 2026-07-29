@@ -10,56 +10,64 @@ type Button = {
 
 const buttons: Button[] = [
   {
+    name: "Astrid",
     siteURL: "https://astrid.sh/",
     imageURL: "/buttons/astrid-badge.png",
-    description: "you are here!",
+    description: "You are here! Thanks for stopping by",
   },
   {
-    name: "lumie",
-    imageURL: "/buttons/lumie-badge.png",
-    description:
-      "cool british girl & femtanyl enjoyer - she's also a gamedev student!",
-  },
-  {
+    name: "Aroze",
     siteURL: "https://aroze.me/",
     imageURL: "/buttons/aroze-badge.png",
     description:
-      "one of the people i've known for the longest time, she's my best friend and you should check out her stuff.",
+      "I've known Aroze for several years, she's my best friend and you should check out her stuff. She might also be the funniest person I've ever known.",
   },
   {
+    name: "Lily",
     siteURL: "https://lily.pet/",
     imageURL: "/buttons/lily-badge.gif",
     description:
-      "lily is my favorite blahaj haver, i love every one of our conversations",
+      "Lily is my favorite blahaj haver, there's not enough words to describe how much I appreciate my friendship with her",
   },
   {
+    name: "Eva",
     siteURL: "https://eva.ac/",
     imageURL: "/buttons/eva-badge.png",
     description:
-      "eva is most known for getting up to shenanigans, but she's genuinely an amazing friend too",
+      "Eva is mostly known for getting up to shenanigans, but she's genuinely an amazing friend too",
   },
   {
+    name: "Jos",
     siteURL: "https://jos.gg/",
     imageURL: "/buttons/jos-badge.gif",
     description:
-      "jos is a great guy that is literally everywhere, he's super smart & also a fellow cookies enjoyer that has a cute cat",
+      "He's super smart and is obsessed with cookies, we even met over cookies",
   },
   {
-    siteURL: "https://jamie.rs/",
-    imageURL: "/buttons/jamie-badge.png",
-    description: "me & jamie don't talk much anymore, but she's still cool 🤍",
-  },
-  {
+    name: "Santio",
     siteURL: "https://santio.me/",
     imageURL: "/buttons/santio-badge.webp",
     description:
-      "you know how they say, if you're the smartest in the room, leave the room? santio's knowledge in software development is 100x mine.",
+      "You know how they say, if you're the smartest in the room, leave the room? If Santio's in the room, I don't have to leave. Santio's knowledge in software development is 100x mine, you can hire this guy for anything",
   },
   {
+    name: "Ollie",
     siteURL: "https://ollie.lol/",
     imageURL: "/buttons/ollie-badge.png",
     description:
-      "Ollie is solely responsible for nearly every friend i have, thanks to starting a Minecraft SMP in 2022 <3",
+      "Ollie is solely responsible for nearly every friend I have, thanks for starting an smp in 2022 <3",
+  },
+  {
+    name: "Lumie",
+    imageURL: "/buttons/lumie-badge.png",
+    description:
+      "She listens to femtanyl which means she's up there on the list of people I like",
+  },
+  {
+    name: "Jamie",
+    siteURL: "https://jamie.rs/",
+    imageURL: "/buttons/jamie-badge.png",
+    description: "Me & Jamie don't talk much anymore, but she's friends with a lot of my friends 💜",
   },
 ];
 
@@ -128,7 +136,7 @@ export default function Buttons() {
         </div>
       </div>
       <div className="m-2">
-        <button onClick={() => setEnabled(!enabled)}>
+        <button onClick={() => setEnabled(!enabled)} className={cn(enabled && "text-pink underline")}>
           Picker {enabled ? "enabled" : "disabled"}
         </button>
         {activeButton && <DisplayBtnInfo btn={activeButton} />}
