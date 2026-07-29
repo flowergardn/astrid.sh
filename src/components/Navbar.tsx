@@ -5,16 +5,16 @@ const pages = [
     name: "Home",
     href: "/",
   },
-  {
-    name: "Blog",
-    href: "/blog",
-  },
+  // {
+  //   name: "Blog",
+  //   href: "/blog",
+  // },
   {
     name: "experience",
     href: "/experience",
   },
   {
-    name: "Contact / Links",
+    name: "contact / links",
     href: "/links",
   },
 ];
@@ -32,7 +32,7 @@ export default function Navbar(props: { currentPage: string }) {
             )}
             href={page.href}
           >
-            {page.name.toLowerCase()}
+            {page.name}
           </a>
         );
       })}
