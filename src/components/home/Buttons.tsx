@@ -82,7 +82,7 @@ function DisplayBtnInfo({ btn }: { btn: Button }) {
   return (
     <div className="w-full md:w-[440px] min-h-36 border border-border border-pink bg-background/50 p-4">
       <div className="flex items-center gap-3">
-        <img src={btn.imageURL} alt={title} />
+        <img src={btn.imageURL} className="pixelated" />
         <h3>{title}</h3>
       </div>
 
@@ -103,7 +103,7 @@ export default function Buttons() {
         <div className="grid grid-cols-3 md:grid-cols-5 w-fit">
           {buttons.map((btn) => {
             const className = cn(
-              "inline-flex sm:mb-0",
+              "inline-flex sm:mb-0 pixelated",
               enabled && "hover:scale-110 transition-all duration-200",
             );
             const img = <img src={btn.imageURL} alt={btn.siteURL} />;

@@ -71,6 +71,10 @@
   .project {
     @apply underline decoration-pink/80;
   }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
 }
 
 @layer base {
