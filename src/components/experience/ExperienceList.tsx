@@ -42,6 +42,17 @@ const professional = [
 
 const voluntary = [
   {
+    name: "Modrinth (2026 - Present)",
+    image: "/assets/modrinth.png",
+    description: (
+      <>
+        <p>
+          Modrinth is a mod distribution platform for Minecraft, allowing users to download a variety of mods, resource packs, etc. I volunteer to help moderate their Discord server.
+        </p>
+      </>
+    ),
+  },
+  {
     name: "Minehut (2023 - 2024)",
     image: "/assets/minehut.png",
     description: (
